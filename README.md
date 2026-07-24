@@ -1,4 +1,4 @@
-# AITokenBus 产品拆解报告
+# AITokenSharing 产品分析
 
 > AI Token 共享/转售网关平台 —— 前端静态逆向分析报告
 
@@ -6,11 +6,11 @@
 
 ## 概述
 
-本仓库对 AITokenBus 进行了完整的产品拆解与逆向分析。AITokenBus 是一个将多个 AI 服务商订阅聚合成「池（Pool）」的 Token 共享/转售网关平台，支持 OpenAI、Claude、Gemini、DeepSeek 等主流 AI 模型，并通过「挖矿得币」的经济叙事形成供给与消费侧闭环。
+本仓库对 AITokenSharing 进行了完整的产品拆解与逆向分析。AITokenSharing 是一个将多个 AI 服务商订阅聚合成「池（Pool）」的 Token 共享/转售网关平台，支持 OpenAI、Claude、Gemini、DeepSeek 等主流 AI 模型，并通过「挖矿得币」的经济叙事形成供给与消费侧闭环。
 
 ## 报告内容
 
-- [📄 完整分析报告](./AITokenBus%E5%88%86%E6%9E%90.md)
+- [📄 完整分析报告](./AITokenSharing%E5%88%86%E6%9E%90.md)
 - [🖥️ 交互式架构图](./docs/architecture.html)（双击打开浏览器查看）
 - [📖 逆向复现指南](./HOWTO.md)
 
@@ -48,7 +48,7 @@
 
 ## 免责声明
 
-本报告仅用于技术学习与研究目的。报告中的分析基于公开可访问的前端静态资源，不代表对 AITokenBus 平台或其运营方的任何评价。使用者应自行判断平台合规性，并遵守相关法律法规及各 AI 服务商的 Terms of Service。
+本报告仅用于技术学习与研究目的。报告中的分析基于公开可访问的前端静态资源，不代表对 AITokenSharing 平台或其运营方的任何评价。使用者应自行判断平台合规性，并遵守相关法律法规及各 AI 服务商的 Terms of Service。
 
 ## 系列扩展
 

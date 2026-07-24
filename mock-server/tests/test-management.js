@@ -22,7 +22,7 @@ async function fetchJSON(url, opts = {}) {
 const authHeaders = (token = TOKEN) => ({ 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' });
 
 (async () => {
-  console.log('\n=== AITokenBus Mock Gateway — 管理 API 测试 ===\n');
+  console.log('\n=== AITokenSharing Mock Gateway — 管理 API 测试 ===\n');
 
   // Auth
   await test('POST /api/auth/password (登录)', async () => {

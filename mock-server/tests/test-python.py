@@ -1,6 +1,6 @@
 """
-AITokenBus Mock Server — Python 客户端测试
-模拟使用 OpenAI SDK 通过 AITokenBus 网关调用不同上游模型
+AITokenSharing Mock Server — Python 客户端测试
+模拟使用 OpenAI SDK 通过 AITokenSharing 网关调用不同上游模型
 
 运行方式: pip install openai && python tests/test-python.py
 """
@@ -14,11 +14,11 @@ except ImportError:
     sys.exit(1)
 
 BASE_URL = "http://localhost:3456/v1"
-API_KEY = "sk-mock-aitokenbus-key-00001"
+API_KEY = "sk-mock-aitokensharing-key-00001"
 
 client = OpenAI(api_key=API_KEY, base_url=BASE_URL)
 
-print("\n=== AITokenBus Mock Gateway — Python SDK 测试 ===\n")
+print("\n=== AITokenSharing Mock Gateway — Python SDK 测试 ===\n")
 
 # 1. 获取模型列表
 print("[1] 获取可用模型列表...")
@@ -31,7 +31,7 @@ for m in models.data:
 print("\n[2] 调用 GPT-4o (OpenAI 原生)...")
 resp = client.chat.completions.create(
     model="gpt-4o",
-    messages=[{"role": "user", "content": "介绍一下 AITokenBus 的矿池机制"}],
+    messages=[{"role": "user", "content": "介绍一下 AITokenSharing 的矿池机制"}],
     temperature=0.7,
     max_tokens=300,
 )
@@ -64,7 +64,7 @@ print(f"    Token 用量: {resp.usage.total_tokens}")
 print("\n[5] 跨协议调用: OpenAI SDK → Gemini...")
 resp = client.chat.completions.create(
     model="gemini-pro",
-    messages=[{"role": "user", "content": "Hello from Python SDK via AITokenBus!"}],
+    messages=[{"role": "user", "content": "Hello from Python SDK via AITokenSharing!"}],
     max_tokens=100,
 )
 print(f"    模型: {resp.model}")

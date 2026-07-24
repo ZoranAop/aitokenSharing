@@ -1,6 +1,6 @@
-# AITokenBus 模拟网关环境
+# AITokenSharing 模拟网关环境
 
-用于验证 [产品拆解报告](../AITokenBus分析.md) 中 API 调用示例的本地模拟服务器。
+用于验证 [产品分析报告](../AITokenSharing分析.md) 中 API 调用示例的本地模拟服务器。
 
 ## 快速开始
 
@@ -16,7 +16,7 @@ npm start
 
 | 资源 | 值 |
 |------|-----|
-| **API Key** | `sk-mock-aitokenbus-key-00001` |
+| **API Key** | `sk-mock-aitokensharing-key-00001` |
 | **API Key (成员)** | `sk-mock-member-key-00002` |
 | **平台 JWT Token** | `mock-jwt-platform-token-12345` |
 | **用户** | alice@example.com / bob@example.com |
@@ -78,9 +78,9 @@ python tests/test-python.py
 - **矿工心跳**: 模拟 miner daemon 心跳上报
 - **多租户隔离**: 不同 API Key 归属不同用户和池
 
-## 与真实 AITokenBus 的差异
+## 与真实 AITokenSharing 的差异
 
-| 特性 | 模拟环境 | 真实 AITokenBus |
+| 特性 | 模拟环境 | 真实 AITokenSharing |
 |------|---------|----------------|
 | AI 响应 | 固定模板回复 | 实际调用上游 AI 模型 |
 | 格式转换 | 仅记录转换步骤 | 真实请求/响应格式转换 |
@@ -90,9 +90,9 @@ python tests/test-python.py
 ## 架构对应
 
 ```
-模拟环境                           真实 AITokenBus
+模拟环境                           真实 AITokenSharing
 ─────────                          ────────────────
-mock-server/server.js             AITokenBus 后端
+mock-server/server.js             AITokenSharing 后端
   ├── /v1/* (代理端点)      ←→    网关 Proxy 层
   ├── /api/auth/*           ←→    鉴权服务
   ├── /api/wallet/*         ←→    钱包服务

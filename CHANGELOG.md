@@ -24,5 +24,5 @@ All notable changes to this project will be documented in this file.
 ## [1.0.0] - 2026-07-24
 
 ### Added
-- 初始版本：AITokenBus 产品拆解报告（8 章）
+- 初始版本：AITokenSharing 产品分析（8 章）
 - 基础 README.md

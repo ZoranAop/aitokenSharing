@@ -1,4 +1,4 @@
-# AITokenBus Product Analysis Report
+# AITokenSharing Product Analysis Report
 
 > AI Token Sharing/Resale Gateway Platform — Frontend Static Reverse Engineering Analysis
 
@@ -8,11 +8,11 @@
 
 ## Overview
 
-This repository contains a comprehensive product analysis and reverse engineering study of AITokenBus — an AI Token sharing/resale gateway platform that aggregates multiple AI service provider subscriptions (OpenAI, Claude, Gemini, DeepSeek) into "Pools". Members receive their own derived API Keys and can access all services through unified OpenAI/Anthropic/Gemini-compatible endpoints.
+This repository contains a comprehensive product analysis and reverse engineering study of AITokenSharing — an AI Token sharing/resale gateway platform that aggregates multiple AI service provider subscriptions (OpenAI, Claude, Gemini, DeepSeek) into "Pools". Members receive their own derived API Keys and can access all services through unified OpenAI/Anthropic/Gemini-compatible endpoints.
 
 ## Report Contents
 
-- [Full Analysis Report (Chinese)](./AITokenBus%E5%88%86%E6%9E%90.md)
+- [Full Analysis Report (Chinese)](./AITokenSharing%E5%88%86%E6%9E%90.md)
 - [Interactive Architecture Diagram](./docs/architecture.html) (open in browser)
 - [Reverse Engineering Guide](./HOWTO.md)
 
@@ -50,7 +50,7 @@ The report covers thirteen chapters:
 
 ## Disclaimer
 
-This report is for technical learning and research purposes only. The analysis is based on publicly accessible frontend static resources and does not represent any judgment of the AITokenBus platform or its operators. Users should independently assess platform compliance and adhere to relevant laws, regulations, and each AI service provider's Terms of Service.
+This report is for technical learning and research purposes only. The analysis is based on publicly accessible frontend static resources and does not represent any judgment of the AITokenSharing platform or its operators. Users should independently assess platform compliance and adhere to relevant laws, regulations, and each AI service provider's Terms of Service.
 
 ## License
 

@@ -1,7 +1,7 @@
 {
-  "name": "aitokenbus-mock-server",
+  "name": "aitokensharing-mock-server",
   "version": "1.0.0",
-  "description": "AITokenBus 模拟网关环境 — 用于验证产品拆解报告中的 API 调用示例",
+  "description": "AITokenSharing 模拟网关环境 — 用于验证产品分析报告中的 API 调用示例",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

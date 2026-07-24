@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AITokenBus 系统架构 - 交互图</title>
+<title>AITokenSharing 系统架构 - 交互图</title>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
 <style>
   :root {
@@ -136,7 +136,7 @@
 <body>
 <header>
   <div>
-    <h1>AITokenBus 系统架构</h1>
+    <h1>AITokenSharing 系统架构</h1>
     <p class="subtitle">交互式架构图 · 点击模块查看详情</p>
   </div>
   <div class="controls">
@@ -158,7 +158,7 @@ flowchart TB
         C3["Agents / Bots"]
         C4["Web 控制台"]
     end
-    subgraph Gateway["⚙️ AITokenBus 网关 / API Proxy"]
+    subgraph Gateway["⚙️ AITokenSharing 网关 / API Proxy"]
         G1["鉴权 Auth<br/>GitHub OAuth + 邮箱密码"]
         G2["格式自动转换<br/>OpenAI ↔ Claude ↔ Gemini ↔ DeepSeek"]
         G3["配额 / RPM 限流 + 计量"]

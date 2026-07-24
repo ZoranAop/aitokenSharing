@@ -1,6 +1,6 @@
-# AITokenBus 产品拆解报告
+# AITokenSharing 产品分析
 
-> - 分析对象：AITokenBus
+> - 分析对象：AITokenSharing
 > - 分析时间：2026-07-24
 > - 分析方法：落地页抓取 + 前端打包文件（Vite/React SPA，`/assets/index-*.js`）静态分析
 > - 说明：代理与路由核心逻辑位于后端，前端仅将请求发往 `/v1/*` 端点，由服务端完成选池、选上游、格式转换、限流与计费。
@@ -25,7 +25,7 @@
 
 ## 一、产品定位
 
-AITokenBus 是一个「AI Token 共享 / 转售网关平台」。它把个人或团队的多个 AI 服务商订阅（OpenAI、Claude、Gemini、DeepSeek）聚合成「池（Pool）」，成员加入后获得自己独立的派生 API Key，通过平台提供的 OpenAI / Anthropic / Gemini 兼容端点统一调用。平台在中间层完成：
+AITokenSharing 是一个「AI Token 共享 / 转售网关平台」。它把个人或团队的多个 AI 服务商订阅（OpenAI、Claude、Gemini、DeepSeek）聚合成「池（Pool）」，成员加入后获得自己独立的派生 API Key，通过平台提供的 OpenAI / Anthropic / Gemini 兼容端点统一调用。平台在中间层完成：
 
 - 多 provider 的**格式自动转换**；
 - 池内多上游的**负载路由 / 兜底**；
@@ -45,7 +45,7 @@ flowchart TB
         C3[Agents / Bots]
         C4[Web 控制台]
     end
-    subgraph Gateway["AITokenBus 网关 / API Proxy"]
+    subgraph Gateway["AITokenSharing 网关 / API Proxy"]
         G1["鉴权 Auth<br/>GitHub OAuth + 邮箱密码"]
         G2["格式自动转换<br/>OpenAI ↔ Claude ↔ Gemini ↔ DeepSeek"]
         G3["配额 / RPM 限流 + 计量"]
@@ -201,7 +201,7 @@ sequenceDiagram
 
 ### 9.1 同类平台概览
 
-| 维度 | AITokenBus | LiteLLM | One API | AIHubMix | openai-forward |
+| 维度 | AITokenSharing | LiteLLM | One API | AIHubMix | openai-forward |
 |------|-----------|---------|---------|----------|----------------|
 | **定位** | Token 共享 + 矿池经济 | 企业级 LLM 网关 | 多模型接入管理 | 模型聚合 + 分销 | 轻量级转发代理 |
 | **开源** | 闭源 SaaS | ✅ MIT | ✅ MIT | 闭源 SaaS | ✅ MIT |
@@ -213,12 +213,12 @@ sequenceDiagram
 | **计费/计量** | ✅ token/请求/成本 | ✅ Spend Tracking | ✅ 用量统计 | ✅ 充值计费 | ❌ |
 | **多语言** | ✅ en/zh-CN/zh-TW | ✅ | ✅ | 中文 | ❌ |
 
-### 9.2 AITokenBus 的差异化特征
+### 9.2 AITokenSharing 的差异化特征
 
 1. **唯一引入「挖矿」叙事的平台** — 通过 TC 积分和矿池机制激励供给侧
 2. **市场化的 Token 流通** — 公开挂牌机制让供给与需求在平台内自由匹配
 3. **纯 SaaS 模式** — 不自部署，所有流量经过平台中转，数据集中度高
-4. **C 端友好** — 相比 LiteLLM 等面向开发者的产品，AITokenBus 更偏向终端用户
+4. **C 端友好** — 相比 LiteLLM 等面向开发者的产品，AITokenSharing 更偏向终端用户
 
 ### 9.3 竞争力评估
 
@@ -354,7 +354,7 @@ curl -X GET "https://[platform]/v1beta/models" \
 from openai import OpenAI
 
 client = OpenAI(
-    api_key="YOUR_AITOKENBUS_KEY",
+    api_key="YOUR_AITOKENSHARING_KEY",
     base_url="https://[platform]/v1"
 )
 

@@ -16,7 +16,7 @@ const USAGE_LOGS = [];
 
 function initMockData() {
   const userId = 'user_001';
-  const apiKey = 'sk-mock-aitokenbus-key-00001';
+  const apiKey = 'sk-mock-aitokensharing-key-00001';
   const platformToken = 'mock-jwt-platform-token-12345';
 
   API_KEYS.set(apiKey, { userId, poolId: 'pool_official', quotaRemaining: 1000000, rpmLimit: 60 });
@@ -132,7 +132,7 @@ function mockAIResponse(messages, model) {
       index: 0,
       message: {
         role: 'assistant',
-        content: `[Mock ${provider.toUpperCase()} Response via AITokenBus Gateway]\nModel: ${model}\nReply: This is a simulated response to "${lastMsg.slice(0, 50)}${lastMsg.length > 50 ? '...' : ''}".\n\nIn production, this request would be routed to the actual ${provider} API after format conversion and load balancing.`,
+        content: `[Mock ${provider.toUpperCase()} Response via AITokenSharing Gateway]\nModel: ${model}\nReply: This is a simulated response to "${lastMsg.slice(0, 50)}${lastMsg.length > 50 ? '...' : ''}".\n\nIn production, this request would be routed to the actual ${provider} API after format conversion and load balancing.`,
       },
       finish_reason: 'stop',
     }],
@@ -200,7 +200,7 @@ app.post('/v1/messages', authApiKey, rateLimit, (req, res) => {
     type: 'message',
     role: 'assistant',
     model,
-    content: [{ type: 'text', text: `[Mock Anthropic Response via AITokenBus] Model: ${model}. Your message was processed through the gateway.` }],
+    content: [{ type: 'text', text: `[Mock Anthropic Response via AITokenSharing] Model: ${model}. Your message was processed through the gateway.` }],
     stop_reason: 'end_turn',
     usage: { input_tokens: 20, output_tokens: Number(max_tokens) || 100 },
   });
@@ -221,7 +221,7 @@ app.post('/v1beta/models/:modelName', authApiKey, rateLimit, (req, res) => {
   const { modelName } = req.params;
   res.json({
     candidates: [{
-      content: { parts: [{ text: `[Mock Gemini Response via AITokenBus] Model: ${modelName}. Request processed by gateway.` }], role: 'model' },
+      content: { parts: [{ text: `[Mock Gemini Response via AITokenSharing] Model: ${modelName}. Request processed by gateway.` }], role: 'model' },
       finishReason: 'STOP',
     }],
     usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 20, totalTokenCount: 30 },
@@ -367,7 +367,7 @@ app.get('/api/health', (_req, res) => res.json({ status: 'ok', uptime: process.u
 app.listen(PORT, () => {
   console.log(`
 ╔══════════════════════════════════════════════════════╗
-║     AITokenBus Mock Gateway Server                  ║
+║     AITokenSharing Mock Gateway Server                  ║
 ║     http://localhost:${PORT}                            ║
 ╠══════════════════════════════════════════════════════╣
 ║  代理网关端点 (API Key 鉴权):                         ║
@@ -387,7 +387,7 @@ app.listen(PORT, () => {
 ║    /api/routes/*  路由 (可用池)                     ║
 ╠══════════════════════════════════════════════════════╣
 ║  测试 API Key:                                      ║
-║    sk-mock-aitokenbus-key-00001                     ║
+║    sk-mock-aitokensharing-key-00001                     ║
 ║  平台 JWT Token:                                    ║
 ║    mock-jwt-platform-token-12345                    ║
 ╠══════════════════════════════════════════════════════╣

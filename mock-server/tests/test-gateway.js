@@ -1,6 +1,6 @@
 // 代理网关端点测试 — 模拟 Claude Code / Codex 等工具调用
 const BASE = 'http://localhost:3456';
-const API_KEY = 'sk-mock-aitokenbus-key-00001';
+const API_KEY = 'sk-mock-aitokensharing-key-00001';
 
 async function test(name, fn) {
   process.stdout.write(`  ${name}... `);
@@ -20,7 +20,7 @@ async function fetchJSON(url, opts = {}) {
 }
 
 (async () => {
-  console.log('\n=== AITokenBus Mock Gateway — 代理端点测试 ===\n');
+  console.log('\n=== AITokenSharing Mock Gateway — 代理端点测试 ===\n');
 
   await test('POST /v1/chat/completions (OpenAI)', async () => {
     const { data } = await fetchJSON(`${BASE}/v1/chat/completions`, {
