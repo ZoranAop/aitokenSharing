@@ -6,7 +6,7 @@
 
 ## 概述
 
-本仓库对 [AITokenBus](https://aitokenbus.24x7.to/)（`https://aitokenbus.24x7.to/`）进行了完整的产品拆解与逆向分析。AITokenBus 是一个将多个 AI 服务商订阅聚合成「池（Pool）」的 Token 共享/转售网关平台，支持 OpenAI、Claude、Gemini、DeepSeek 等主流 AI 模型，并通过「挖矿得币」的经济叙事形成供给与消费侧闭环。
+本仓库对 AITokenBus 进行了完整的产品拆解与逆向分析。AITokenBus 是一个将多个 AI 服务商订阅聚合成「池（Pool）」的 Token 共享/转售网关平台，支持 OpenAI、Claude、Gemini、DeepSeek 等主流 AI 模型，并通过「挖矿得币」的经济叙事形成供给与消费侧闭环。
 
 ## 报告内容
 
