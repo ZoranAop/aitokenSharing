@@ -2,7 +2,7 @@
 
 > AI Token 共享/转售网关平台 —— 前端静态逆向分析报告
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ZoranAop/aitokenSharing/blob/main/LICENSE)
 
 ## 概述
 
@@ -11,19 +11,26 @@
 ## 报告内容
 
 - [📄 完整分析报告](./AITokenBus%E5%88%86%E6%9E%90.md)
+- [🖥️ 交互式架构图](./docs/architecture.html)（双击打开浏览器查看）
+- [📖 逆向复现指南](./HOWTO.md)
 
-报告涵盖以下八个章节：
+报告涵盖以下十三个章节：
 
 | 章节 | 内容 |
 |------|------|
 | **一、产品定位** | 平台核心价值主张与一句话定位 |
 | **二、系统架构** | Mermaid 流程图展示客户端-网关-上游-生态四层架构 |
 | **三、功能模块分解** | 前端路由、后端 API 与功能映射表 |
-| **四、核心请求链路逻辑** | 从建池到代理转发的完整 7 步流程 |
+| **四、核心请求链路逻辑** | 从建池到代理转发的完整 7 步流程 + 时序图 |
 | **五、挖矿机制解读** | Token Mining Pool 差异化设定深度分析 |
 | **六、技术栈与架构** | React + Vite 前端、RESTful API、矿工客户端 |
 | **七、商业模式与风险提示** | 盈利模式及合规隐患 |
-| **八、附录：关键路由/API 清单** | 全部前端路由、网关端点、后端 API |
+| **八、安全深度分析** | 攻击面梳理、凭证管理风险、合规矩阵、加固建议 |
+| **九、竞品横向对比** | LiteLLM / One API / AIHubMix 等多维度对比 |
+| **十、挖矿经济模型量化** | TC 积分参数估算、可持续性分析、收益率测算 |
+| **十一、API 调用示例** | curl / Python 示例（OpenAI / Anthropic / Gemini 端点） |
+| **十二、复现方法** | 同类平台逆向分析的标准化流程 |
+| **十三、附录：关键路由/API 清单** | 全部前端路由、网关端点、后端 API |
 
 ## 核心发现
 
@@ -42,6 +49,18 @@
 ## 免责声明
 
 本报告仅用于技术学习与研究目的。报告中的分析基于公开可访问的前端静态资源，不代表对 AITokenBus 平台或其运营方的任何评价。使用者应自行判断平台合规性，并遵守相关法律法规及各 AI 服务商的 Terms of Service。
+
+## 系列扩展
+
+本仓库是「AI 网关产品逆向分析」系列之一。未来计划覆盖：
+
+- [ ] LiteLLM — 开源 LLM 网关架构分析
+- [ ] One API — 多模型接入管理平台拆解
+- [ ] AIHubMix — 模型聚合分销平台
+- [ ] Cloudflare AI Gateway — 边缘 AI 代理方案
+- [ ] 自建 vs SaaS — AI 网关选型决策框架
+
+欢迎 Watch 本仓库关注更新，也欢迎贡献竞品分析。
 
 ## License
 
