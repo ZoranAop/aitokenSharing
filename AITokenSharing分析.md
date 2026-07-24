@@ -421,7 +421,7 @@ curl -X GET "https://[platform]/api/routes/available-pools" \
 
 **后端 API（已确认存在）**：
 - `/api/auth/*`：github 系列、password、me、profile
-- `/api/mine/*`：pools / miners / miner-keys / my-mines / available-models / free-llm / llm / vendors / paid-vendors / types / heartbeat / tasks/poll
+- `/api/mine/*`：pools / miners / miner-keys / my-mines / free-llm / llm / vendors / paid-vendors / types / heartbeat / tasks/poll
 - `/api/wallet/*`：account / transactions / consumption-logs / consumption-stats
 - `/api/market/*` `/api/pools/*` `/api/routes/*`
 

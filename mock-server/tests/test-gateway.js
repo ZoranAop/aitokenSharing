@@ -92,6 +92,26 @@ async function fetchJSON(url, opts = {}) {
     if (!data.candidates) throw new Error('Missing candidates');
   });
 
+  await test('POST /v1/chat/completions (SSE 流式)', async () => {
+    const res = await fetch(`${BASE}/v1/chat/completions`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        messages: [{ role: 'user', content: 'Stream test' }],
+        stream: true,
+      }),
+    });
+    if (res.status !== 200) throw new Error(`Expected 200, got ${res.status}`);
+    const ct = res.headers.get('content-type') || '';
+    if (!ct.includes('text/event-stream')) throw new Error(`Expected text/event-stream, got ${ct}`);
+    const text = await res.text();
+    if (!text.includes('data: [DONE]')) throw new Error('Missing [DONE] terminator');
+    const chunkCount = (text.match(/data: \{/g) || []).length;
+    if (chunkCount < 2) throw new Error(`Expected >= 2 chunks, got ${chunkCount}`);
+    console.log(`-> ${chunkCount} SSE chunks received, stream OK`);
+  });
+
   await test('401 无效 API Key', async () => {
     const res = await fetch(`${BASE}/v1/chat/completions`, {
       method: 'POST',

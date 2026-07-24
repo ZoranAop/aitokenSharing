@@ -139,5 +139,34 @@ const authHeaders = (token = TOKEN) => ({ 'Authorization': `Bearer ${token}`, 'C
     console.log(`-> uptime: ${data.uptime.toFixed(0)}s, keys: ${data.activeKeys}, miners: ${data.activeMiners}`);
   });
 
+  // Error cases
+  await test('401 无效 Token', async () => {
+    const res = await fetch(`${BASE}/api/auth/me`, {
+      headers: { 'Authorization': 'Bearer invalid-token-xxx' },
+    });
+    if (res.status !== 401) throw new Error(`Expected 401, got ${res.status}`);
+  });
+
+  await test('401 缺失 Token', async () => {
+    const res = await fetch(`${BASE}/api/auth/me`);
+    if (res.status !== 401) throw new Error(`Expected 401, got ${res.status}`);
+  });
+
+  await test('401 错误密码登录', async () => {
+    const res = await fetch(`${BASE}/api/auth/password`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'nobody@example.com', password: 'wrong' }),
+    });
+    if (res.status !== 401) throw new Error(`Expected 401, got ${res.status}`);
+  });
+
+  await test('404 不存在的池', async () => {
+    const res = await fetch(`${BASE}/api/pools/join`, {
+      method: 'POST', headers: authHeaders(),
+      body: JSON.stringify({ poolId: 'pool_nonexistent' }),
+    });
+    if (res.status !== 404) throw new Error(`Expected 404, got ${res.status}`);
+  });
+
   console.log('\n  All management API tests completed.\n');
 })();

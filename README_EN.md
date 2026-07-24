@@ -52,6 +52,18 @@ The report covers thirteen chapters:
 
 This report is for technical learning and research purposes only. The analysis is based on publicly accessible frontend static resources and does not represent any judgment of the AITokenSharing platform or its operators. Users should independently assess platform compliance and adhere to relevant laws, regulations, and each AI service provider's Terms of Service.
 
+## Series Expansion
+
+This repository is part of the "AI Gateway Product Reverse Engineering" series. Future plans include:
+
+- [ ] LiteLLM — Open-source LLM Gateway Architecture Analysis
+- [ ] One API — Multi-model Access Management Platform
+- [ ] AIHubMix — Model Aggregation & Distribution Platform
+- [ ] Cloudflare AI Gateway — Edge AI Proxy Solution
+- [ ] Self-hosted vs SaaS — AI Gateway Selection Decision Framework
+
+Watch this repository for updates. Competitor analysis contributions are welcome.
+
 ## License
 
 MIT

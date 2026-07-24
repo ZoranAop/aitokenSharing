@@ -222,22 +222,22 @@ sequenceDiagram
     <div class="info-card" data-module="auth">
       <h3>🔐 认证模块</h3>
       <p>邮箱密码 + GitHub OAuth</p>
-      <div class="tags"><span class="tag">/api/auth/*</span><span class="tag">6 端点</span></div>
+      <div class="tags"><span class="tag">/api/auth/*</span><span class="tag">7 端点</span></div>
     </div>
     <div class="info-card" data-module="pool">
       <h3>🏊 池管理</h3>
       <p>建池、配上游、审批入池</p>
-      <div class="tags"><span class="tag">/api/pools/*</span><span class="tag">5 路由</span></div>
+      <div class="tags"><span class="tag">/api/pools/*</span><span class="tag">4 路由</span></div>
     </div>
     <div class="info-card" data-module="market">
       <h3>🏪 Token 市场</h3>
       <p>公开挂牌、浏览他人池</p>
-      <div class="tags"><span class="tag">/api/market/*</span><span class="tag">2 路由</span></div>
+      <div class="tags"><span class="tag">/api/market/*</span><span class="tag">1 路由</span></div>
     </div>
     <div class="info-card" data-module="mine">
       <h3>⛏️ 矿池 / 挖矿</h3>
       <p>生成 Key、管理矿机、心跳</p>
-      <div class="tags"><span class="tag">/api/mine/*</span><span class="tag">11+ 端点</span></div>
+      <div class="tags"><span class="tag">/api/mine/*</span><span class="tag">11 端点</span></div>
     </div>
     <div class="info-card" data-module="wallet">
       <h3>💰 钱包</h3>
@@ -247,7 +247,7 @@ sequenceDiagram
     <div class="info-card" data-module="proxy">
       <h3>🔄 代理网关</h3>
       <p>兼容端点、格式转换</p>
-      <div class="tags"><span class="tag">/v1/*</span><span class="tag">5 端点</span></div>
+      <div class="tags"><span class="tag">/v1/*</span><span class="tag">6 端点</span></div>
     </div>
   </div>
 
@@ -262,11 +262,11 @@ mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose'
 
 const apiDetails = {
   auth: ['/api/auth/github', '/api/auth/github/callback', '/api/auth/github/bind', '/api/auth/github/unbind', '/api/auth/password', '/api/auth/me', '/api/auth/profile'],
-  pool: ['/api/pools/create', '/api/pools/created', '/api/pools/joined', '/api/pools/join', '/api/pools/my-requests'],
-  market: ['/api/market/list', '/api/market/listings'],
-  mine: ['/api/mine/pools', '/api/mine/miners', '/api/mine/miner-keys', '/api/mine/my-mines', '/api/mine/available-models', '/api/mine/free-llm', '/api/mine/llm', '/api/mine/vendors', '/api/mine/paid-vendors', '/api/mine/types', '/api/mine/heartbeat', '/api/mine/tasks/poll'],
+  pool: ['/api/pools/created', '/api/pools/joined', '/api/pools/join', '/api/pools/my-requests'],
+  market: ['/api/market/listings'],
+  mine: ['/api/mine/pools', '/api/mine/miners', '/api/mine/miner-keys', '/api/mine/my-mines', '/api/mine/free-llm', '/api/mine/llm', '/api/mine/vendors', '/api/mine/paid-vendors', '/api/mine/types', '/api/mine/heartbeat', '/api/mine/tasks/poll'],
   wallet: ['/api/wallet/account', '/api/wallet/transactions', '/api/wallet/consumption-logs', '/api/wallet/consumption-stats'],
-  proxy: ['POST /v1/chat/completions', 'POST /v1/messages', 'GET /v1/models', 'POST /v1/responses', 'GET /v1beta/models']
+  proxy: ['POST /v1/chat/completions', 'POST /v1/messages', 'GET /v1/models', 'POST /v1/responses', 'GET /v1beta/models', 'POST /v1beta/models/:name']
 };
 
 const titles = { auth: '🔐 认证 API', pool: '🏊 池管理 API', market: '🏪 市场 API', mine: '⛏️ 矿池 API', wallet: '💰 钱包 API', proxy: '🔄 代理网关端点' };

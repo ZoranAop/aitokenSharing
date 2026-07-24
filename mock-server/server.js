@@ -153,14 +153,61 @@ function mockAIResponse(messages, model) {
 
 // ========== 代理网关端点 (/v1/*) ==========
 
-// OpenAI 兼容 — Chat Completions
+// OpenAI 兼容 — Chat Completions（支持 SSE 流式响应）
 app.post('/v1/chat/completions', authApiKey, rateLimit, (req, res) => {
-  const { model, messages } = req.body;
+  const { model, messages, stream } = req.body;
   if (!model || !messages) return res.status(400).json({ error: { message: 'model and messages are required', type: 'invalid_request_error' } });
 
   const response = mockAIResponse(messages, model);
   USAGE_LOGS.push({ time: Date.now(), userId: req.apiKeyInfo.userId, model, tokens: response.usage.total_tokens, tcCost: response.usage.tc_cost });
-  res.json(response);
+
+  if (stream) {
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+    res.setHeader('X-Accel-Buffering', 'no');
+    res.flushHeaders();
+
+    const fullContent = response.choices[0].message.content;
+    const chunkSize = 4;
+    const chunks = [];
+    for (let i = 0; i < fullContent.length; i += chunkSize) {
+      chunks.push(fullContent.slice(i, i + chunkSize));
+    }
+
+    let sent = 0;
+    const interval = setInterval(() => {
+      if (sent < chunks.length) {
+        const chunk = {
+          id: response.id,
+          object: 'chat.completion.chunk',
+          created: response.created,
+          model: response.model,
+          choices: [{
+            index: 0,
+            delta: { content: chunks[sent] },
+            finish_reason: null,
+          }],
+        };
+        res.write(`data: ${JSON.stringify(chunk)}\n\n`);
+        sent++;
+      } else {
+        const finalChunk = {
+          id: response.id,
+          object: 'chat.completion.chunk',
+          created: response.created,
+          model: response.model,
+          choices: [{ index: 0, delta: {}, finish_reason: 'stop' }],
+        };
+        res.write(`data: ${JSON.stringify(finalChunk)}\n\n`);
+        res.write('data: [DONE]\n\n');
+        res.end();
+        clearInterval(interval);
+      }
+    }, 50);
+  } else {
+    res.json(response);
+  }
 });
 
 // OpenAI 兼容 — Models
