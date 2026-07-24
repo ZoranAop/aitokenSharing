@@ -1,0 +1,14 @@
+{
+  "name": "aitokenbus-mock-server",
+  "version": "1.0.0",
+  "description": "AITokenBus 模拟网关环境 — 用于验证产品拆解报告中的 API 调用示例",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "uuid": "^10.0.0"
+  }
+}
